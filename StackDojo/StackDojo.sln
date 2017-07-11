@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackDojo", "StackDojo\StackDojo.csproj", "{E1D04AEA-69D9-407F-B27A-F3D48C829C48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackDojoTests", "StackDojoTests\StackDojoTests.csproj", "{A97C1960-7CB6-4AEC-BE7E-E9CB700643D6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1D04AEA-69D9-407F-B27A-F3D48C829C48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D04AEA-69D9-407F-B27A-F3D48C829C48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D04AEA-69D9-407F-B27A-F3D48C829C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D04AEA-69D9-407F-B27A-F3D48C829C48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A97C1960-7CB6-4AEC-BE7E-E9CB700643D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A97C1960-7CB6-4AEC-BE7E-E9CB700643D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A97C1960-7CB6-4AEC-BE7E-E9CB700643D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A97C1960-7CB6-4AEC-BE7E-E9CB700643D6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
