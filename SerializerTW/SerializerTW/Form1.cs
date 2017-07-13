@@ -15,13 +15,14 @@ namespace SerializerTW
     {
         public Form1()
         {
+            DirectoryInfo taskDirectory = new DirectoryInfo(@"C:\cica\");
+            FileInfo[] taskFiles = taskDirectory.GetFiles("person*.dat");
+            Person.IDCounter = taskFiles.Length;
             InitializeComponent();
-            if(File.Exists(@"C:\cica\person0.dat"))
+            if (File.Exists(@"C:\cica\person0.dat"))
             {
                 Person person = Person.DeSerialize(true);
-                textBox1.Text = person.name;
-                textBox2.Text = person.address;
-                textBox3.Text = person.phone;
+                FillText(person);
             }
         }
 
@@ -41,13 +42,9 @@ namespace SerializerTW
             {
                 try
                 {
-
-                
-                Person person = Person.DeSerialize(true);
-                textBox1.Text = person.name;
-                textBox2.Text = person.address;
-                textBox3.Text = person.phone;
-                }catch(FileNotFoundException ex)
+                    Person person = Person.DeSerialize(true);
+                    FillText(person);
+                } catch (FileNotFoundException ex)
                 {
                     MessageBox.Show("No more files");
                 }
@@ -59,9 +56,7 @@ namespace SerializerTW
             if (File.Exists(@"C:\cica\person0.dat"))
             {
                 Person person = Person.DeSerialize(false);
-                textBox1.Text = person.name;
-                textBox2.Text = person.address;
-                textBox3.Text = person.phone;
+                FillText(person);
             }
         }
 
@@ -69,10 +64,8 @@ namespace SerializerTW
         {
             if (File.Exists(@"C:\cica\person0.dat"))
             {
-                Person person = Person.DeSerialize(false);
-                textBox1.Text = person.name;
-                textBox2.Text = person.address;
-                textBox3.Text = person.phone;
+                Person person = Person.DeSerializeFirst();
+                FillText(person);
             }
         }
 
@@ -81,10 +74,15 @@ namespace SerializerTW
             if (File.Exists(@"C:\cica\person0.dat"))
             {
                 Person person = Person.DeSerializeLast();
-                textBox1.Text = person.name;
-                textBox2.Text = person.address;
-                textBox3.Text = person.phone;
+                FillText(person);
             }
+        }
+
+        private void FillText(Person person)
+        {
+            textBox1.Text = person.name;
+            textBox2.Text = person.address;
+            textBox3.Text = person.phone;
         }
     }
 }

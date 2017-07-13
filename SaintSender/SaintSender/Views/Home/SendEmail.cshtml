@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SendEmail</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+
+    @model SaintSender.Models.SendEmailModel
+
+    @using (Html.BeginForm("Send", "Home", FormMethod.Post, new { @class = "form-group" }))
+    {
+        @Html.TextBoxFor(model => model.email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.email)
+        @Html.TextBoxFor(model => model.body, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.body)
+
+        <button type="submit">Subscribe</button>
+    }
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

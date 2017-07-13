@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Dictionary<String, List<String>>
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Message</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(int i=0;i<Model["sender"].Count;i++)
+            {
+                <tr>
+                    <td>@Model["sender"][i]</td>
+                    <td>@Model["To"][i]</td>
+                    <td>@Model["message"][i]</td>
+                    <td>@Model["Date"][i]</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/Home/Next">Next</a>
+    <a href="/Home/Previous">Previous</a>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</div>

@@ -17,9 +17,9 @@ namespace SerializerTW
         public string address { get; }
         [NonSerialized]
         private int ID;
-        private static int IDCounter = 0;
+        public static int IDCounter = 0;
         private DateTime startDate;
-        private static int currentID = 0;
+        private static int currentID = -1;
 
         public Person(string name, string phone, string address)
         {
@@ -47,37 +47,41 @@ namespace SerializerTW
             if (isNext) currentID++;
             else currentID--;
             if (currentID < 0) currentID = 0;
-            if (currentID == IDCounter) currentID = IDCounter - 1;
+            if (currentID > IDCounter) currentID = IDCounter;
             using (Stream stream = File.Open(@"C:\cica\person"+currentID + ".dat", FileMode.Open))
             {
                 var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
                 object obj = binaryFormatter.Deserialize(stream);
                 Person person = (Person)obj;
-
                 return person;
             }
         }
 
         public static Person DeSerializeLast()
         {
-            using (Stream stream = File.Open(@"C:\cica\person" +( IDCounter-1) + ".dat", FileMode.Open))
+            using (Stream stream = File.Open(@"C:\cica\person" +( IDCounter -1) + ".dat", FileMode.Open))
             {
                 var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
                 object obj = binaryFormatter.Deserialize(stream);
                 Person person = (Person)obj;
-
+                currentID = IDCounter-1;
                 return person;
             }
         }
 
-
-        public override String ToString()
+        public static Person DeSerializeFirst()
         {
-            string output = this.name;
+            using (Stream stream = File.Open(@"C:\cica\person0.dat", FileMode.Open))
+            {
+                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
-            return "sonkkk";
+                object obj = binaryFormatter.Deserialize(stream);
+                Person person = (Person)obj;
+                currentID = -1;
+                return person;
+            }
         }
 
         public void OnDeserialization(object sender)
